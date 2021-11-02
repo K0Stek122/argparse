@@ -5,7 +5,7 @@ C++ library for parsing command line arguments
 Just add argparse.h and argparse.cpp to your project and then include argparse.h wherever you need
 
 ## Example Usage:
-```
+```c++
 int main(int argc, char* argv[])
 {
   std::vector<std::vector<std::string>> argToParse = { { "-c", "--count" }, { "-p", "--patrick" }, { "-o", "--output" } };
