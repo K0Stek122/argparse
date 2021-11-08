@@ -6,6 +6,9 @@ Just add argparse.h and argparse.cpp to your project and then include argparse.h
 
 ## Example Usage:
 ```c++
+//Called like this
+//./argparse -c -p testing1 --output testing2
+
 int main(int argc, char* argv[])
 {
   std::vector<std::vector<std::string>> argToParse = { { "-c", "--count" }, { "-p", "--patrick" }, { "-o", "--output" } };
@@ -19,4 +22,15 @@ int main(int argc, char* argv[])
   std::cout << argparse::find(parsed, "-p") << std::endl;
   std::cout << argparse::find(parsed, "-t") << std::endl;
 }
+//OUTPUT:
+/*
+-c | TRUE
+-p | testing1
+-o | testing2
+
+TRUE
+testing1
+testing2
+*/
+
 ```
