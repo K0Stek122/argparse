@@ -27,15 +27,26 @@ std::string FindFirstArgument(std::vector<std::vector<std::string>> argToParse, 
 std::vector<std::pair<std::string, std::string>> argparse::parse(int argc, char* argv[], std::vector<std::vector<std::string>> argToParse)
 {
   std::vector<std::pair<std::string, std::string>> out;
-  for (int i = 0; i < argc - 1; i++)
+  for (int i = 0; i < argc; i++)
   {
+    std::cout << "DEBUG: " << argv[i] << std::endl;
     char* curChar = argv[i];
+    char* nextChar = argv[i + 1];
     if (curChar[0] == '-' && IsArgumentCorrect(argToParse, curChar))
     {
+      std::cout << "DEBUG2: " << curChar << std::endl;
+      std::cout << "DEBUG3: " << nextChar << std::endl;
       std::pair<std::string, std::string> temp;
       // temp.first = std::string(1, curChar[0]) + curChar[1];
       temp.first = FindFirstArgument(argToParse, curChar);
-      temp.second = argv[i + 1];
+      if (nextChar[0] != '-')
+      {
+	temp.second = nextChar;
+      }
+      else if (nextChar[0] == '-')
+      {
+	temp.second = "TRUE";
+      }
       out.push_back(temp);
     }
   }
